@@ -1,0 +1,65 @@
+# The following dbt_project.yml configures a project that looks like this:
+# .
+# ├── test
+# │   ├── generic
+# │   │    └── test_positive_values.sql
+# │   ├── check_value_range.sql
+# │   └── check_value_range_pars.sql
+# └── models
+#     ├── staging
+#     │   ├── stg_production.sql
+#     │   └── stg_event_sessions.sql
+#     ├── production1.sql
+#     └── schema.yml
+# a user.yml file will be created in the root folder on first run
+
+name: 'test_MSSQLDB'    # Your project name - can be changed to anything you want, but must match with models: ... below!
+version: '1.0.0'        #version number to follow upgrades
+config-version: 2
+
+profile: 'sqlserver_factory' # Your choice. Must match the profile name in profiles.yml
+
+# Directory structure - these are the folder names dbt will look for
+test-paths: ['tests']       # where to look for tests
+model-paths: ['models']     # Folder name where your SQL models
+#source-paths and model-paths cannot both be defined. The `source-paths` config has been deprecated in favor of `model-paths`.
+#source-paths: [sources]    # Folder name for sources, do not use if model-paths is declared
+#analysis-paths: ["analyses"] # Folder name for analyses
+#seed-paths: ["seeds"]       # Folder name for seed files
+#macro-paths: ["macros"]     # Folder name for general macros, like datatype conversions, exchange rate based price conversions...
+
+models:
+  test_MSSQLDB:             # Must match the project name defined above
+    staging:                # Folder name for staging (raw data) layer models
+      +materialized: view   # view or table, important if dbt run is with --save
+      +enabled: true        # Ensure models in the folder are enabled  
+      +schema: dbo
+      +database: FacilityManagement_Core
+    #sources:
+    #  +enabled: true # Ensure sources are enabled
+    #marts:                  # Folder name for transformed/business layer models
+    #  +materialized: table
+
+# Optional configuration to control test output
+#tests:
+#  +store_failures: true    # Global setting to store all test failures
+#  +schema: dbt_test_results  # Schema where test results will be stored
+#  +data-paths: ["data"]    # Folder name for data tests
+#  +schema-paths: ["schemas"] # Folder name for schema tests
+#  +fqn_test: false         # Test full qualified names (fqn) instead of just the model name
+#  +fail_fast: false        # Stop execution upon first failure
+#  +threads: 1              # Number of threads to use for multi-threaded execution
+#  +models:                 # Test specific models
+#    - name: my_model
+#      +tags:                # Test specific tags
+#        - my_tag
+#      +severity: ERROR      # Test severity level
+#      +store_failures: true # Store test failures for this model
+
+# Optional configuration to control data freshness tests:
+#data-paths: ["data"]        # Folder name for data freshness tests
+#schema-paths: ["schemas"]   # Folder name for schema freshness tests
+
+# Optional configuration to control failure/warning thresholds:
+#  +error_if: ">100 failures"  # Fail if more than 100 records fail
+#  +warn_if: ">10 failures"    # Warn if more than 10 records fail
