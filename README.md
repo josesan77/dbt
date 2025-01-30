@@ -16,8 +16,10 @@ I downloaded a **Machine in Production data** [csv file](https://www.kaggle.com/
 The MS SQL server 2022 instance was installed and set up earlier [MS download page](https://www.microsoft.com/en-us/sql-server/sql-server-downloads). Authentication was set to Microsoft User Authentication (to keep it simple).
 
 An important information is the OLE DB Connector (ODBC) driver version, that is required for proper configuration of the dbt system. The (driver)[Download Microsoft ODBC Driver 18 for SQL Server (x64)](https://go.microsoft.com/fwlink/?linkid=2280794)
- name should be checked either in the (installed) ![Installed Software list](images/ODBC_driver_version.png)
-It should be ```'ODBC Driver 17 for SQL Server'``` or 18 (on Windows OS). dbt 1.8+ version is compatible with both driver version. 
+ name should be checked in the (installed) 
+ ![Software list](images/ODBC_driver_version.png)
+ 
+It should be ```'ODBC Driver 17 for SQL Server'``` or ...18... (on Windows OS). dbt 1.8+ version is compatible with both driver versions. 
  
 The entire name should be copied and used... see later.
  
