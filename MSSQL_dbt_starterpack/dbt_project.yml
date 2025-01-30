@@ -1,5 +1,7 @@
 # The following dbt_project.yml configures a project that looks like this:
-# .
+# .dbt
+# ├── dbt_project.yml
+# ├── profiles.yml
 # ├── test
 # │   ├── generic
 # │   │    └── test_positive_values.sql
