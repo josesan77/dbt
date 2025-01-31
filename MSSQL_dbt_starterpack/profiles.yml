@@ -16,9 +16,9 @@ sqlserver_factory: # Profile name - must match the profile: value in dbt_project
     dev2: # another environment, could be targeted by 'dbt run --target dev2' command
       database: FacilityManagement_Core
       driver: 'ODBC Driver 17 for SQL Server'
-      server: DSKTP-DTSCNC\SQLEXPRESS
+      server: [SERVERNAME\DBSERVERNAME] #same as above
       port: 1433
       threads: 1 # Number of threads to use for multi-threaded execution, for performance optimization, in case of large datasets 
       type: sqlserver
-      user: [USERNAME]
-      password: [PASSWORD]
+      user: [OTHER USERNAME]    # to test other user rights, User must be added in SQL Server
+      password: [OTHER USER'S PASSWORD]

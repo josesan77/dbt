@@ -1,0 +1,26 @@
+sqlserver_factory: # Profile name - must match the profile: value in dbt_project.yml
+  target: dev # Default 'developer' environment (Target) name - must match the target: value in dbt_project.yml if there is one
+  outputs:
+    dev: # the targeted environment name
+      type: sqlserver # Database type - must match the type: value in dbt_project.yml if there is one
+      driver: 'ODBC Driver 17 for SQL Server' # SQL Server driver name - must match the ODBC driver name (driver: in dbt_project.yml if it is defined there)
+      server: [SERVERNAME]\[SQLSERVERNAME] #odb # Replace with your SQL Server instance name or IP
+      port: 1433 # Default SQL Server port (Set in server Connection details) - change if using a different port
+      database: FacilityManagement_Core # Insert your database name
+      schema: dbo # Production1 Insert your schema name, should be pre-created in your database
+      windows_login: true # Set to true if using Windows Authentication, false if using SQL Server Authentication. Check MS SQL server authentication settings first!
+      user: [USERNAME] # Insert your Windows Authentication / SQL Server username
+      password: [PASSWORD] # Insert your Windows Authentication / SQL Server password
+      encrypt: false  # Do not use if possible! Disable SSL encryption (to avoid possible connection issues due to inappropriate certificate)
+      
+    dev2: # another environment, could be targeted by 'dbt run --target dev2' command
+      database: FacilityManagement_Core
+      schema: dbo
+      driver: 'ODBC Driver 17 for SQL Server'
+      server: [SERVERNAME]\[SQLSERVERNAME] # same as above
+      port: 1433
+      threads: 1 # Number of threads to use for multi-threaded execution, for performance optimization, in case of large datasets 
+      type: sqlserver
+      user: [OTHERUSERNAME]    # to test other user rights, User must be added in SQL Server
+      password: [OTHERUSER'S PASSWORD]
+      

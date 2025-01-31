@@ -1,0 +1,72 @@
+version: 2 # Version of the dbt project configuration file, default is 2, declared by dbt
+
+sources:
+  - name: production_source  # Defines the source
+    database: FacilityManagement_Core  # Your database name
+    schema: dbo
+    tables:
+      - name: Production1  # Matches the reference in your SQL file
+
+models:
+  - name: stg_production        # Name of the model you want to test
+    schema: dbo                 # Specify the schema where the view will be created
+    description: "Staging table for production data"
+    columns:
+      - name: ProcessTemp       # Column to test
+        data_tests:             #name: 'data_tests' since dbt v1.8!# List of tests to run on the column
+          - positive_values     # check if all values are positive
+          - value_range         # list cases where temperature falls out a PREDEFINED range
+          - not_null 
+          #description: "Check if the temperature is out of a predefined range, see SQL file for details"
+          - value_range_pars:   # list cases where temperature falls out of BELOW DEFINED range
+              min: 273.3          # Minimum value in Kelvin
+              max: 313.7           # Maximum value in Kelvin
+      - name: UID       # Column to test
+        data_tests:             
+          - unique         # Reference to your specific test
+          - not_null
+          #- raw: "{{ check_value_range_pars_macro(ref('stg_production'), 'ProcessTemp', 273.15, 313.7) }}"
+      - name: TypeLMH
+        data_tests:
+          - not_null
+          - accepted_values:     # does not need a sql file to be created
+              values: ['L', 'M', 'H']
+      - name: RotationalSpeed       # Column to test
+        data_tests:             #name: 'data_tests' since dbt v1.8!# List of tests to run on the column
+          - positive_values     # check if all values are positive
+          - not_null 
+          #description: Check if the speed is out of the below defined range
+          - value_range_pars:   # list cases where temperature falls out of a predefined range
+              min: 1168          # Minimum rotational speed (abs max in dataset: 1168)
+              max: 2880          # Maximum rotational speed (abs max in dataset: 2886)
+      - name: Torque       # Column to test
+        data_tests:             #name: 'data_tests' since dbt v1.8!# List of tests to run on the column
+          - positive_values     # check if all values are positive
+          - not_null 
+          #description: Check if the speed is out of the below defined range
+          - value_range_pars:   # list cases where temperature falls out of a predefined range
+              min: 4          # Minimum rotational speed (abs max in dataset: 3.8)
+              max: 76.8          # Maximum rotational speed (abs max in dataset: 76.6)    
+
+    #+staging: true              # declare the model as a staging model
+    #+stage: true                # Must be set to true for staging models
+
+  - name: production_column_data        # Name of the model you want to test
+    database: FacilityManagement_Core  # Your database name
+    schema: dbo                 # Specify the schema where the view will be created
+    description: "Calculations for production data"
+    columns:
+      - name: ProcessTemp
+        #data_test:
+
+  # You can also create a more detailed test configuration  
+  #- name: fct_sales
+  #  columns:
+  #    - name: ProcessTemp
+  #      tests:
+  #        - positive_values:
+  #            severity: error    # Can be error or warn
+  #            where: "transaction_date > '2024-01-01'"  # Optional filter
+  #            config:
+  #              store_failures: true   # Store failed records in a table
+  #              schema: dbt_test_results  # Schema for storing results

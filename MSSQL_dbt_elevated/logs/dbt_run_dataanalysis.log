@@ -1,0 +1,16 @@
+21:15:59  Running with dbt=1.8.9
+21:16:00  Registered adapter: sqlserver=1.8.7
+21:16:01  Running production_column_data model
+21:16:01  Found 3 models, 3 data tests, 1 source, 506 macros
+21:16:01  
+21:16:02  Concurrency: 1 threads (target='dev')
+21:16:02  
+21:16:02  1 of 1 START sql view model dbo.production_column_data ......................... [RUN]
+21:16:02  Running production_column_data model
+21:16:02  1 of 1 OK created sql view model dbo.production_column_data .................... [OK in 0.35s]
+21:16:02  
+21:16:02  Finished running 1 view model in 0 hours 0 minutes and 0.58 seconds (0.58s).
+21:16:02  
+21:16:02  Completed successfully
+21:16:02  
+21:16:02  Done. PASS=1 WARN=0 ERROR=0 SKIP=0 TOTAL=1

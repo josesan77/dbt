@@ -37,7 +37,8 @@ After installing the dbt-core and dbt-sqlserver modules you have to chose from:
 
 See advised configuration parameters and config file at the **Common configuration** section of the MSSQL-dbt setup page (see link above).
 
-Copy (or Git Clone) this project to a local folder. The root folder contains a main folder **MSSQL_dbt_starterpack**, with a very basic system just to check **dbt - MS SQL** co-operation / functionality and to start understanding dbt from the basics.
+#### 1. Starter dbt system
+Copy (or Git Clone) this project to a local folder. The root folder contains a main folder **MSSQL_dbt_starterpack**, with a very basic system just to check **dbt (core) - MS SQL** co-operation / functionality and to start understanding ```dbt (core)``` from the basics.
 
 Create a specific folder for dbt project (like C:/.dbt) and copy the subfolder content of the **MSSQL_dbt_starterpack** folder to the above created folder, so that folder structure should look like:
 
@@ -60,6 +61,12 @@ Create a specific folder for dbt project (like C:/.dbt) and copy the subfolder c
 #     |-- schema.yml
 ```
 
+#### 2. System with elevated dbt functionality
+Copy (or Git Clone) this project to a local folder. The root folder contains a main folder **MSSQL_dbt_elevated**, with a very basic system just to check **dbt (core) - MS SQL** co-operation / functionality and to start understanding ```dbt (core)``` from the basics.
+
+Create a specific folder for dbt project (like C:/.dbt) and copy the subfolder content of the **MSSQL_dbt_elevated** folder to the above created folder, so that folder structure should look similar to the above defined structure with some additional folders (e.g. macros, log) and files.
+
+#### 3. Configure, and validate configuration
 Check eand modify the ```profiles.yml``` configuration file, which resembles to this (Windows authentication, no encryption defined):
 
 ```
