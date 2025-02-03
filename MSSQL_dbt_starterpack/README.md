@@ -7,11 +7,11 @@ I found this database wrangling/managing tool online and found it quite impressi
 1. starting with a basic setup, a starter kit, in which I explain all dependencies that are required to set up a basic, but functional system. This one.
 
 2. an advanced staging and testing setup (on the same dataset as this one).
-[dbt advanced kit](./MSSQL_dbt_elevated)
+[dbt advanced kit](../../MSSQL_dbt_elevated)
 
 Both examples are based on a local MS SQL server, with prepared Factory dataset (from Kaggle).
 
-dbt is running in Python runtime environment and uses JINJA2 dynamic referencing giving high variability to the static SQL queries. See some DML, DDL and test-query examples in [SQL snippets](./SQL_snippets) folder.
+dbt is running in Python runtime environment and uses JINJA2 dynamic referencing giving high variability to the static SQL queries. See some DML, DDL and test-query examples in [SQL snippets](../../SQL_snippets) folder.
 
 I recommend starting with this one first, dive in, understand it, especially the naming (referencing) restrictions, then move to the next level.
 
@@ -136,4 +136,4 @@ _________________________________________________
 
 ## Additional dbt information
 
-For additional information go back to [dbt project root](./).
+For additional information go back to [dbt project root](../).

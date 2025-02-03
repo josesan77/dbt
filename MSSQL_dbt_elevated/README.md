@@ -6,13 +6,13 @@ I recommend
 
 1. starting with a basic setup, a starter kit, in which I explain all dependencies that are required to set up a basic, but functional system. This one.
 
-[dbt starter kit](./MSSQL_dbt_starterpack)
+[dbt starter kit](../MSSQL_dbt_starterpack)
 
 2. This one as an advanced staging and testing setup (on the same dataset as this one).
 
 Both examples are based on a local MS SQL server, with prepared Factory dataset (from Kaggle).
 
-dbt is running in Python runtime environment and uses JINJA2 dynamic referencing giving high variability to the static SQL queries. See some DML, DDL and test-query examples in [SQL snippets](./SQL_snippets) folder.
+dbt is running in Python runtime environment and uses JINJA2 dynamic referencing giving high variability to the static SQL queries. See some DML, DDL and test-query examples in [SQL snippets](../SQL_snippets) folder.
 
 Dive into the details, understand it, especially the naming (referencing) restrictions, then move to the next level.
 
@@ -155,4 +155,4 @@ _________________________________________________
 
 ## Additional dbt information
 
-For additional information go back to [dbt project root](./).
+For additional information go back to [dbt project root](../).
