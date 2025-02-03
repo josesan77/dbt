@@ -1,0 +1,5 @@
+SELECT @@ServerName;
+GO
+
+SELECT @@VERSION;
+GO
